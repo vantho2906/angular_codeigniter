@@ -1,0 +1,55 @@
+<navbar-component active="'employee'"></navbar-component>
+<br>
+<div>
+
+    <select style="width: 200px;display: inline-block;" class="form-select" ng-model="filterColumn">
+        <option value='' selected>Search By</option>
+        <option value="id">ID</option>
+        <option value="name">Name</option>
+        <option value="age">Age</option>
+        <option value="salary">Salary</option>
+    </select>
+    <input style="width: 200px; display:inline-block" type="text" class="form-control" ng-model="filterValue">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#createModal" class="btn btn-dark">Create new
+        Employee</button>
+    <button type="button" ng-click="reset()" class="btn btn-primary">Reset</button>
+
+</div>
+<br>
+
+<table class="table table-striped">
+    <tr class="table-primary">
+        <td style="cursor: pointer" class="link-primary" ng-click="sort('id')">ID</td>
+        <td style="cursor: pointer" class="link-primary" ng-click="sort('name')">Name</td>
+        <td style="cursor: pointer" class="link-primary" ng-click="sort('age')">Age</td>
+        <td class="link-primary">Avatar</td>
+        <td style="cursor: pointer" class="link-primary" ng-click="sort('salary')">Salary</td>
+        <td class="link-primary">Update</td>
+        <td class="link-primary">Delete</td>
+    </tr>
+    <tr class="table-primary" ng-repeat="person in employees | orderBy:sortColumn:isReverse | filter: customFilter ">
+        <td><a style="text-decoration: none;" ng-href="#!employee/{{person.id}}">{{person.id}}</a></td>
+        <td><a style="text-decoration: none; color:inherit" ng-href="#!employee/{{person.id}}">{{person.name}}</a></td>
+        <td>{{calculateAge(person.dob)}}</td>
+        <!-- <td><button type="button" class="btn"
+                ng-class="{'btn-success': calculateAge(person.dob) > 40, 'btn-danger': calculateAge(person.dob) <= 40}">
+                <span>{{calculateAge(person.dob) > 40 ? 'Yes' : 'No'}}</span>
+            </button>
+        </td> -->
+        <td> <a style="text-decoration: none; color:inherit" ng-href="#!employee/{{person.id}}"><img
+                    style="width: 50px;" ng-src="{{person.image}}" class="rounded" alt="..."></a>
+        </td>
+        <td>{{person.salary}}</td>
+        <td><button type="button" ng-click="openUpdateModal(person)" data-bs-toggle="modal"
+                data-bs-target="#updateModal" class="btn btn-info">Update</button>
+        </td>
+        <td><button type="button" ng-click="openDeleteModal(person)" data-bs-toggle="modal"
+                data-bs-target="#deleteModal" class="btn btn-warning">Delete</button>
+        </td>
+        </td>
+    </tr>
+</table>
+
+<update-modal-component employee="updateEmployee" update="update"></update-modal-component>
+<create-modal-component employee="createEmployee" create="create"></create-modal-component>
+<delete-modal-component delete="delete" employee="deleteEmployee"></delete-modal-component>

@@ -1,0 +1,11 @@
+<navbar-component></navbar-component>
+<div class="card mx-auto" style="width: 15rem; ">
+    <img ng-src="{{employee.profile_image}}" class="img-thumbnail" alt="...">
+    <h5 class="card-header text-center">Employee ID <span class="text-primary">{{employee.id}}</span></h5>
+    <div class="card-body">
+        <h5 class="card-title text-primary">{{employee.name}}</h5>
+        <p class="card-text">Age: <span class="text-primary">{{employee.age}}</span></p>
+        <p class="card-text">Salary: <span class="text-primary">{{employee.salary}}</span></p>
+        <a href="#!employee" class="btn btn-primary mx-auto">Back to table</a>
+    </div>
+</div>

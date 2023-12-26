@@ -1,0 +1,38 @@
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div>{{$ctrl.employee | json}}</div>
+      <form class="p-3">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">ID</label>
+          <input ng-model="$ctrl.employee.id" placeholder="ID" type="text" readonly class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input ng-model="$ctrl.employee.name" placeholder="Name" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Birthday</label>
+          <input ng-model="$ctrl.employee.dob"
+            placeholder="Age" type="number" class="form-control" min="0">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Salary</label>
+          <input ng-model="$ctrl.employee.salary | number" placeholder="Salary" type="number"
+            class="form-control" min="0">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Image Url</label>
+          <input ng-model="$ctrl.employee.image" placeholder="Image" type="text"
+            class="form-control">
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" ng-click="$ctrl.update($ctrl.employee)" data-bs-dismiss="modal"
+          class="btn btn-primary">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>

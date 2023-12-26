@@ -1,0 +1,18 @@
+<navbar-component active="'home'"></navbar-component>
+<table class="table ">
+    <tr class="table-primary">
+        <td>Name</td>
+        <td>Birth</td>
+        <td>Dislikes</td>
+        <td>Status</td>
+    </tr>
+    <tr class="table-primary" ng-repeat="lang in languages">
+        <td>{{lang.name | uppercase}}</td>
+        <td>{{lang.likes | date:'dd-MM-yyyy'}}</td>
+        <td>{{lang.dislikes | number:1}}</td>
+        <td>
+            <button type="button" class="btn"
+                ng-class="{'btn-success': lang.status, 'btn-danger': !lang.status}">{{lang.status | status}}</button>
+        </td>
+    </tr>
+</table>

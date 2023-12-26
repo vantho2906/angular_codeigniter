@@ -1,0 +1,1 @@
+angular.module('app', ['about', 'home','ngRoute', 'employee', 'navbar'])
